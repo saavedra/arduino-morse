@@ -1,5 +1,8 @@
 #include <string.h>
 
+int led = 9; // the PWM pin the LED is attached to
+
+
 String alphanumToMorse(char val){
     String chars_alphanum[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 
     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", 
@@ -52,23 +55,23 @@ void morseToLed(String text){
   for (char c : text){
     switch (c){
       case '.': 
-        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(led, HIGH);
         delay(duration);
-        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(led, LOW);
         delay(duration);
         break;
       case '-':
-        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(led, HIGH);
         delay(duration * 3);
-        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(led, LOW);
         delay(duration);
         break;
       case ' ':
-        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(led, LOW);
         delay(duration * 2);
         break;
       case '|':
-        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(led, LOW);
         delay(duration * 3);
         break;
     }
@@ -77,8 +80,8 @@ void morseToLed(String text){
 
 
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(LED_BUILTIN, OUTPUT);
+
+  pinMode(led, OUTPUT);
   Serial.begin(9600);
   while (!Serial) {
     // Wait for Serial port to connect
