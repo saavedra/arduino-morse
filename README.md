@@ -1,1 +1,1 @@
-Basic arduino project, takes a message in and transmit it in morse code through the built in LED.
+An arduino project to convert text to morse code and output it through LED.
